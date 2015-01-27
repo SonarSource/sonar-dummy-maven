@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
     <groupId>com.sonarsource.dummy</groupId>
     <artifactId>dummy</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
   </parent>
 
   <artifactId>sonar-dummy-plugin</artifactId>
   <packaging>sonar-plugin</packaging>
 
   <name>SonarSource :: dummy :: Plugin</name>
+  <description>dummy project for testing releaseAuto</description>
+  <url>http://www.sonarsource.com/products/plugins/languages/dummy/</url>
 
   <properties>
     <!-- Configuration for sonar-packaging-maven-plugin -->
@@ -24,6 +24,15 @@
   </properties>
 
   <dependencies>
+    <dependency>
+      <groupId>com.sonarsource.plugins.license</groupId>
+      <artifactId>license-api</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.codehaus.sonar</groupId>
+      <artifactId>sonar-plugin-api</artifactId>
+    </dependency>
     
     <dependency>
       <groupId>junit</groupId>
