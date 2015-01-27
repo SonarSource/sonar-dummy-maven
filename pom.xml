@@ -22,7 +22,7 @@
   </properties>
 
   <modules>
-    <module>dummy-frontend</module>
+    <module>sonar-dummy-plugin</module>
   </modules>
 
   <dependencyManagement>
