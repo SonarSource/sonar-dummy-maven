@@ -15,9 +15,7 @@ public final class DummyPlugin extends LicensedPlugin {
   @SuppressWarnings({"rawtypes", "unchecked"})
   @Override
   protected List doGetExtensions() {
-    List extensions = Lists.newArrayList();
-    
-    return extensions;
+    return Lists.newArrayList();
   }
 
   @Override
