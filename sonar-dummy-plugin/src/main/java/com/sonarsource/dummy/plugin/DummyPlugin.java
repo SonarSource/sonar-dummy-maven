@@ -14,12 +14,12 @@ public final class DummyPlugin extends LicensedPlugin {
 
   @SuppressWarnings({"rawtypes", "unchecked"})
   @Override
-  protected List doGetExtensions() {
+  private List doGetExtensions() {
     return Lists.newArrayList();
   }
 
   @Override
-  protected LicensedPluginMetadata doGetPluginMetadata() {
+  private LicensedPluginMetadata doGetPluginMetadata() {
     return null;
   }
 
