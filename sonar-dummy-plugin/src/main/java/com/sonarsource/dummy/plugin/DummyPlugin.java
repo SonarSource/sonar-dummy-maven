@@ -23,4 +23,8 @@ public final class DummyPlugin extends LicensedPlugin {
     return null;
   }
 
+  public String sayHello() {
+    System.out.println("hello");
+  }
+
 }
