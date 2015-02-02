@@ -24,7 +24,7 @@ public final class DummyPlugin extends LicensedPlugin {
   }
 
   public String sayHello() {
-    System.out.println("hello");
+    return "hello";
   }
 
 }
