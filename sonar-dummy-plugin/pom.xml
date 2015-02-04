@@ -9,7 +9,6 @@
   </parent>
 
   <artifactId>sonar-dummy-plugin</artifactId>
-  <version>6.1.2</version>
   <packaging>sonar-plugin</packaging>
 
   <name>SonarSource :: dummy :: Plugin</name>
