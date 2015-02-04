@@ -5,10 +5,11 @@
   <parent>
     <groupId>com.sonarsource.dummy</groupId>
     <artifactId>dummy</artifactId>
-    <version>6.1.2</version>
+    <version>6.2-SNAPSHOT</version>
   </parent>
 
   <artifactId>sonar-dummy-plugin</artifactId>
+  <version>6.1.1</version>
   <packaging>sonar-plugin</packaging>
 
   <name>SonarSource :: dummy :: Plugin</name>
@@ -99,9 +100,4 @@
       </plugin>
     </plugins>
   </build>
-
-
-  <scm>
-    <tag>6.1.2</tag>
-  </scm>
 </project>
