@@ -1,28 +1,37 @@
 /*
- * Copyright (C) 2014-2014 SonarSource SA
- * All rights reserved
- * mailto:contact AT sonarsource DOT com
+ * SonarSource :: dummy :: Plugin
+ * Copyright (C) 2014 ${owner}
+ * dev@sonar.codehaus.org
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3 of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02
  */
 package com.sonarsource.dummy.plugin;
 
 import java.util.List;
+import org.sonar.api.SonarPlugin;
 import com.google.common.collect.Lists;
-import com.sonarsource.license.api.LicensedPlugin;
-import com.sonarsource.license.api.LicensedPluginMetadata;
 
-public final class DummyPlugin extends LicensedPlugin {
+public final class DummyPlugin extends SonarPlugin {
 
   @SuppressWarnings({"rawtypes", "unchecked"})
   @Override
-  public List doGetExtensions() {
+  public List getExtensions() {
     return Lists.newArrayList();
   }
 
-  @Override
-  public LicensedPluginMetadata doGetPluginMetadata() {
-    return null;
-  }
-
+  
   public String sayHello() {
     System.out.println("hello");
     return "hello";
