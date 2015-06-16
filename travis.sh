@@ -1,10 +1,4 @@
 #!/bin/bash
-export SONAR_HOST_URL=localhost:9000
-export SONAR_GITHUB_REPOSITORY=git@github.com:SonarSource/sonar_dummy
-export TRAVIS_PULL_REQUEST=1
-SONAR_GITHUB_LOGIN
-SONAR_GITHUB_OAUTH
-
 echo $SONAR_HOST_URL $SONAR_GITHUB_REPOSITORY $TRAVIS_PULL_REQUEST
 
 mvn sonar:sonar \
