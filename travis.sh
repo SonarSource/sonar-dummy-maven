@@ -8,7 +8,5 @@ mvn sonar:sonar \
  -Dsonar.forceUpdate=true \
  -Dsonar.github.login=$SONAR_GITHUB_LOGIN \
  -Dsonar.github.oauth=$SONAR_GITHUB_OAUTH \
- -Dsonar.host.url=$SONAR_HOST_URL \
- -Dsonar.login=$SONAR_LOGIN \
- -Dsonar.password=$SONAR_PASSWORD 
+ -Dsonar.host.url=$SONAR_HOST_URL 
  
