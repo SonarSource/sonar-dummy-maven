@@ -1,7 +1,7 @@
 #!/bin/sh
-if [ "${TRAVIS_PULL_REQUEST}" != "false" ] 
+if [ -n "$SONAR_GITHUB_OAUTH" ] && [ "${TRAVIS_PULL_REQUEST}" != "false" ] 
 then
-	echo "Start pullrequest analysis"
+ echo "Start pullrequest analysis"
  mvn sonar:sonar \
  -Dsonar.analysis.mode=preview \
  -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST \
