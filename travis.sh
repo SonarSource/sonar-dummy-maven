@@ -1,5 +1,21 @@
-#!/bin/sh
-if [ -n "$SONAR_GITHUB_OAUTH" ] && [ "${TRAVIS_PULL_REQUEST}" != "false" ] 
+#!/bin/bash
+
+case "$JOB" in
+
+OTHER)
+ mvn verify -B -e -V
+;;
+
+PRANALYSIS)
+echo PR:$TRAVIS_PULL_REQUEST
+if [ -n "$SONAR_GITHUB_OAUTH" ]
+then
+ echo SONAR_GITHUB_OAUTH true
+else
+ echo SONAR_GITHUB_OAUTH false
+fi
+
+if [ -n "$SONAR_GITHUB_OAUTH" ] && [ "$TRAVIS_PULL_REQUEST" != "false" ] 
 then
  echo "Start pullrequest analysis"
  mvn sonar:sonar \
@@ -13,3 +29,10 @@ then
  -Dsonar.login=$SONAR_LOGIN \
  -Dsonar.password=$SONAR_PASSWD 
 fi 
+;;
+
+*)
+ echo "invalid choice $JOB"
+ exit 1
+ 
+esac
