@@ -3,9 +3,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.codehaus.sonar-plugins</groupId>
+    <groupId>com.sonarsource.parent</groupId>
     <artifactId>parent</artifactId>
-    <version>19</version>
+    <version>33</version>
   </parent>
 
   <groupId>com.sonarsource.dummy</groupId>
