@@ -13,8 +13,18 @@ installTravisTools
 case "$TEST" in
 
 ci)
-  # Do not deploy a SNAPSHOT version but the release version related to this build
-  set_maven_build_version $TRAVIS_BUILD_NUMBER
+  
+  CURRENT_VERSION=`maven_expression "project.version"`
+
+  if [[ $CURRENT_VERSION =~ "-SNAPSHOT" ]]; then
+    echo "Found SNAPSHOT version"
+    # Do not deploy a SNAPSHOT version but the release version related to this build
+    set_maven_build_version $TRAVIS_BUILD_NUMBER
+  else
+    echo "Found RELEASE version"
+  fi
+
+  
  
   # the profile "deploy-sonarsource" is defined in parent pom v28+
   mvn deploy \
