@@ -10,7 +10,7 @@
 
   <groupId>com.sonarsource.dummy</groupId>
   <artifactId>dummy</artifactId>
-  <version>6.12-SNAPSHOT</version>
+  <version>7.0</version>
   <packaging>pom</packaging>
 
   <name>SonarSource :: dummy</name>
