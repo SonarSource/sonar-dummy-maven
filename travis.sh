@@ -13,7 +13,13 @@ installTravisTools
 case "$TEST" in
 
 ci)
-  regular_mvn_build_deploy_analyze
+  # Do not deploy a SNAPSHOT version but the release version related to this build
+  set_maven_build_version $TRAVIS_BUILD_NUMBER
+ 
+  # the profile "deploy-sonarsource" is defined in parent pom v28+
+  mvn deploy \
+    -Pdeploy-sonarsource \
+    -B -e -V
 
   ;;
 
