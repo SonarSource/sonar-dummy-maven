@@ -17,7 +17,7 @@
   <inceptionYear>2014</inceptionYear>
 
   <properties>  
-    <sonarVersion>4.5.2</sonarVersion>  
+    <sonarVersion>4.5.7</sonarVersion>  
   </properties>
 
   <modules>
