@@ -18,6 +18,7 @@
 
   <properties>  
     <sonarVersion>4.5.7</sonarVersion>  
+    <gitRepositoryName>sonar-dummy</gitRepositoryName>
   </properties>
 
   <modules>
