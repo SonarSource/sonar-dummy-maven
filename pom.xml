@@ -70,4 +70,9 @@
     <url>https://github.com/SonarSource/sonar-dummy</url>
     <tag>6.1.2</tag>
   </scm>
+  
+  <issueManagement>
+    <system>JIRA</system>
+    <url>https://jira.sonarsource.com/browse/TP</url>
+  </issueManagement>
 </project>
