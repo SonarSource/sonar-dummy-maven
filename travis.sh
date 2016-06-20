@@ -4,11 +4,14 @@ set -euo pipefail
 
 function installTravisTools {
   mkdir ~/.local
-  curl -sSL https://github.com/SonarSource/travis-utils/tarball/fb9805abb6e894d9cc230849d89a5aebfb97e593 | tar zx --strip-components 1 -C ~/.local
+  curl -sSL https://github.com/SonarSource/travis-utils/tarball/4bef072f7ea7cbcb17cbe64420a2e46fdf02afcf | tar zx --strip-components 1 -C ~/.local
   source ~/.local/bin/install
 }
 
 installTravisTools
+. installJDK8
+
+java -version
 
 case "$TEST" in
 

@@ -16,6 +16,7 @@ matrix:
 cache:
   directories:
     - '$HOME/.m2/repository'
+    - '$HOME/jvm'
 
 notifications:
   email: false
