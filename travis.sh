@@ -27,10 +27,3 @@ ci)
   ;;
 
 esac
-
-echo $TRAVIS
-echo $TRAVIS_BUILD_NUMBER
-echo $TRAVIS_COMMIT
-echo $TRAVIS_PULL_REQUEST
-echo $TRAVIS_BRANCH
-echo $TRAVIS_REPO_SLUG
