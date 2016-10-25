@@ -19,6 +19,7 @@ cache:
     - '$HOME/jvm'
 
 notifications:
+  on_start: always
   email: false
   webhooks:
     - secure: "eyuHlBrxdKwH3F0l+tmFNNOLaxdSHFllS1c5bkETYcu/64n7+QE9PlDoWGlwd4GGmGTI6YvosEsQJieT1uPZHjXDBc9jHkeVKxQ3jN0NrZV9r3kwBTMO/uPvSomtMkXEpiQioQT69V9lVU2Sr5Qq/B6zv6R6P+7VNRk5rpOwgtc="
