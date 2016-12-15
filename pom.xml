@@ -15,6 +15,12 @@
 
   <name>SonarSource :: dummy</name>
   <inceptionYear>2014</inceptionYear>
+  
+  <licenses>
+    <license>
+      <name>SonarSource</name>
+    </license>
+  </licenses>
 
   <properties>  
     <sonarVersion>4.5.7</sonarVersion>  
