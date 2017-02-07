@@ -52,7 +52,7 @@ ci)
       -Dsonar.host.url=$SONAR_HOST_URL \
       -Dsonar.login=$SONAR_TOKEN \
       -Dsonar.projectVersion=$CURRENT_VERSION \
-      -B -e -V -Dmaven.profile $*
+      -B -e -V -Dmaven.profile -Dtesla.profile $*
 
 elif [[ "${TRAVIS_BRANCH}" == "branch-"* ]] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   # no dory analysis on release branch
@@ -75,12 +75,12 @@ elif [[ "${TRAVIS_BRANCH}" == "branch-"* ]] && [ "$TRAVIS_PULL_REQUEST" == "fals
     . set_maven_build_version $TRAVIS_BUILD_NUMBER
     mvn deploy \
       -Pdeploy-sonarsource,release \
-      -B -e -V $*
+      -B -e -V -Dmaven.profile -Dtesla.profile $*
   else
     echo "======= Found RELEASE version ======="
     mvn deploy \
       -Pdeploy-sonarsource,release \
-      -B -e -V $*
+      -B -e -V -Dmaven.profile -Dtesla.profile $*
   fi
 
 elif [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ -n "${GITHUB_TOKEN:-}" ]; then
@@ -104,7 +104,7 @@ elif [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ -n "${GITHUB_TOKEN:-}" ]; then
       -Dsonar.github.oauth=$GITHUB_TOKEN \
       -Dsonar.host.url=$SONAR_HOST_URL \
       -Dsonar.login=$SONAR_TOKEN \
-      -B -e -V $*
+      -B -e -V -Dmaven.profile -Dtesla.profile $*
   else
     echo '======= no deploy'
     mvn org.jacoco:jacoco-maven-plugin:prepare-agent verify sonar:sonar \
@@ -115,7 +115,7 @@ elif [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ -n "${GITHUB_TOKEN:-}" ]; then
       -Dsonar.github.oauth=$GITHUB_TOKEN \
       -Dsonar.host.url=$SONAR_HOST_URL \
       -Dsonar.login=$SONAR_TOKEN \
-      -B -e -V $*
+      -B -e -V -Dmaven.profile -Dtesla.profile $*
   fi
 
 else
@@ -126,7 +126,7 @@ else
 
   mvn verify \
       -Dmaven.test.redirectTestOutputToFile=false \
-      -B -e -V $*
+      -B -e -V -Dmaven.profile -Dtesla.profile $*
 fi
   ;;
 
