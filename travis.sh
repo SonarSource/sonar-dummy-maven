@@ -15,7 +15,7 @@ curl -O http://repo.maven.apache.org/maven2/io/tesla/profile/tesla-profiler/0.0.
 
 mkdir -p ~/maven
 cp -R /usr/local/maven-3.2.5 ~/maven
-ls ~/maven
+ls ~/maven/maven-3.2.5
 export M2_HOME=~/maven/apache-maven-3.2.5
 export PATH=$M2_HOME/bin:$PATH
 which mvn
