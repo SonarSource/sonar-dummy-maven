@@ -12,7 +12,7 @@ installTravisTools
 . installJDK8
 
 curl -O http://repo.maven.apache.org/maven2/io/tesla/profile/tesla-profiler/0.0.3/tesla-profiler-0.0.3.jar
-which mvn
+cp tesla-profiler-0.0.3.jar /usr/local/maven-3.2.5/lib/ext
 
 java -version
 
@@ -21,7 +21,7 @@ case "$TEST" in
 ci)
   #deploy pull request artifacts to repox to start QA
   export DEPLOY_PULL_REQUEST=true
-  regular_mvn_build_deploy_analyze  
+  regular_mvn_build_deploy_analyze -Dmaven.profile
   ;;
 
 *)
