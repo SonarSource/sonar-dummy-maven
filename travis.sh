@@ -28,9 +28,11 @@ case "$TEST" in
 
 ci)
   #deploy pull request artifacts to repox to start QA
-  export DEPLOY_PULL_REQUEST=true
-  mvn clean install -Dmaven.profile
-  
+  export DEPLOY_PULL_REQUEST=true  
+  mvn deploy \
+      -Pdeploy-sonarsource,release \
+      -Dmaven.test.redirectTestOutputToFile=false \
+      -B -e -V -Dmaven.profile
   ;;
 
 *)
