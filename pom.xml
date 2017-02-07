@@ -105,6 +105,7 @@
                                         <tstamp><format property="stepTstamp" pattern="dd-HH:mm:ss" locale="en,US" /></tstamp>
                                         <echo file="stats.log" append="true"
                                               message="${line.separator}${line.separator}${stepTstamp} validate${line.separator}"/>
+                                        <echo message="### ${line.separator}${line.separator}${stepTstamp} validate${line.separator}"/>
                                     </tasks>
                                 </configuration>
                             </execution>
@@ -117,6 +118,7 @@
                                         <tstamp><format property="stepTstamp" pattern="dd-HH:mm:ss" locale="en,US" /></tstamp>
                                         <echo file="stats.log" append="true"
                                               message="${stepTstamp} initialize${line.separator}"/>
+                                        <echo message="### ${stepTstamp} initialize${line.separator}"/>
                                     </tasks>
                                 </configuration>
                             </execution>              
@@ -129,6 +131,7 @@
                                         <tstamp><format property="stepTstamp" pattern="dd-HH:mm:ss" locale="en,US" /></tstamp>
                                         <echo file="stats.log" append="true"
                                               message="${stepTstamp} generate-sources${line.separator}"/>
+                                        <echo message="### ${stepTstamp} generate-sources${line.separator}"/>
                                     </tasks>
                                 </configuration>
                             </execution>
@@ -141,6 +144,7 @@
                                         <tstamp><format property="stepTstamp" pattern="dd-HH:mm:ss" locale="en,US" /></tstamp>
                                         <echo file="stats.log" append="true"
                                               message="${stepTstamp} process-sources${line.separator}"/>
+                                        <echo message="### ${stepTstamp} process-sources${line.separator}"/>
                                     </tasks>
                                 </configuration>
                             </execution>
@@ -153,6 +157,7 @@
                                         <tstamp><format property="stepTstamp" pattern="dd-HH:mm:ss" locale="en,US" /></tstamp>
                                         <echo file="stats.log" append="true"
                                               message="${stepTstamp} generate-resources${line.separator}"/>
+                                        <echo message="### ${stepTstamp} generate-resources${line.separator}"/>
                                     </tasks>
                                 </configuration>
                             </execution>
@@ -165,6 +170,7 @@
                                         <tstamp><format property="stepTstamp" pattern="dd-HH:mm:ss" locale="en,US" /></tstamp>
                                         <echo file="stats.log" append="true"
                                               message="${stepTstamp} process-resources${line.separator}"/>
+                                        <echo message="### ${stepTstamp} process-resources${line.separator}"/>
                                     </tasks>
                                 </configuration>
                             </execution>
@@ -177,6 +183,7 @@
                                         <tstamp><format property="stepTstamp" pattern="dd-HH:mm:ss" locale="en,US" /></tstamp>
                                         <echo file="stats.log" append="true"
                                               message="${stepTstamp} compile${line.separator}"/>
+                                        <echo message="### ${stepTstamp} compile${line.separator}"/>
                                     </tasks>
                                 </configuration>
                             </execution>
@@ -189,6 +196,7 @@
                                         <tstamp><format property="stepTstamp" pattern="dd-HH:mm:ss" locale="en,US" /></tstamp>
                                         <echo file="stats.log" append="true"
                                               message="${stepTstamp} process-classes${line.separator}"/>
+                                        <echo message="### ${stepTstamp} process-classes${line.separator}"/>
                                     </tasks>
                                 </configuration>
                             </execution>
@@ -201,6 +209,7 @@
                                         <tstamp><format property="stepTstamp" pattern="dd-HH:mm:ss" locale="en,US" /></tstamp>
                                         <echo file="stats.log" append="true"
                                               message="${stepTstamp} prepare-package${line.separator}"/>
+                                        <echo message="### ${stepTstamp} prepare-package${line.separator}"/>
                                     </tasks>
                                 </configuration>
                             </execution>
@@ -213,6 +222,7 @@
                                         <tstamp><format property="stepTstamp" pattern="dd-HH:mm:ss" locale="en,US" /></tstamp>
                                         <echo file="stats.log" append="true"
                                               message="${stepTstamp} package${line.separator}"/>
+                                        <echo message="### ${stepTstamp} package${line.separator}"/>
                                     </tasks>
                                 </configuration>
                             </execution>
@@ -225,6 +235,20 @@
                                         <tstamp><format property="stepTstamp" pattern="dd-HH:mm:ss" locale="en,US" /></tstamp>
                                         <echo file="stats.log" append="true"
                                               message="${stepTstamp} install${line.separator}"/>
+                                        <echo message="### ${stepTstamp} install${line.separator}"/>
+                                    </tasks>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>log_pre-deploy</id>
+                                <phase>pre-deploy</phase>
+                                <goals><goal>run</goal></goals>
+                                <configuration>
+                                    <tasks>
+                                        <tstamp><format property="stepTstamp" pattern="dd-HH:mm:ss" locale="en,US" /></tstamp>
+                                        <echo file="stats.log" append="true"
+                                              message="${stepTstamp} pre-deploy${line.separator}"/>
+                                        <echo message="### ${stepTstamp} pre-deploy${line.separator}"/>
                                     </tasks>
                                 </configuration>
                             </execution>
@@ -237,6 +261,20 @@
                                         <tstamp><format property="stepTstamp" pattern="dd-HH:mm:ss" locale="en,US" /></tstamp>
                                         <echo file="stats.log" append="true"
                                               message="${stepTstamp} deploy${line.separator}"/>
+                                        <echo message="### ${stepTstamp} deploy${line.separator}"/>
+                                    </tasks>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>log_post-deploy</id>
+                                <phase>post-deploy</phase>
+                                <goals><goal>run</goal></goals>
+                                <configuration>
+                                    <tasks>
+                                        <tstamp><format property="stepTstamp" pattern="dd-HH:mm:ss" locale="en,US" /></tstamp>
+                                        <echo file="stats.log" append="true"
+                                              message="${stepTstamp} post-deploy${line.separator}"/>
+                                        <echo message="### ${stepTstamp} post-deploy${line.separator}"/>
                                     </tasks>
                                 </configuration>
                             </execution>
