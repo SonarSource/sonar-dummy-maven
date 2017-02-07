@@ -17,6 +17,10 @@ mkdir -p ~/maven
 cp -R /usr/local/maven-3.2.5 ~/maven
 export M2_HOME=~/maven/apache-maven-3.2.5
 export PATH=$M2_HOME/bin:$PATH
+echo $M2_HOME
+echo $PATH
+which mvn
+ls $M2_HOME/lib/ext
 
 cp tesla-profiler-0.0.3.jar ~/maven/maven-3.2.5/lib/ext
 
