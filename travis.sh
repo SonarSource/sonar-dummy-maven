@@ -29,6 +29,11 @@ case "$TEST" in
 ci)
   #deploy pull request artifacts to repox to start QA
   export DEPLOY_PULL_REQUEST=true  
+  CURRENT_VERSION=`maven_expression "project.version"`
+
+  . set_maven_build_version $TRAVIS_BUILD_NUMBER
+  
+  export MAVEN_OPTS="-Xmx1536m -Xms128m"
   mvn deploy \
       -Pdeploy-sonarsource,release \
       -Dmaven.test.redirectTestOutputToFile=false \
