@@ -23,13 +23,7 @@ ci)
   . set_maven_build_version $TRAVIS_BUILD_NUMBER
   
   export MAVEN_OPTS="-Xmx1536m -Xms128m"
-  mvn org.jacoco:jacoco-maven-plugin:prepare-agent deploy sonar:sonar \
-      -Pdeploy-sonarsource,release,stats \
-      -Dmaven.test.redirectTestOutputToFile=false \
-      -Dsonar.host.url=$SONAR_HOST_URL \
-      -Dsonar.login=$SONAR_TOKEN \
-      -Dsonar.projectVersion=$CURRENT_VERSION \
-      -B -e -V -Dmaven.profile
+  regular_mvn_build_deploy_analyze -Pstats
 
   cat stats.log      
   ;;
