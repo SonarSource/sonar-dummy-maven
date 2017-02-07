@@ -11,6 +11,9 @@ function installTravisTools {
 installTravisTools
 . installJDK8
 
+curl -O http://repo.maven.apache.org/maven2/io/tesla/profile/tesla-profiler/0.0.3/tesla-profiler-0.0.3.jar
+which mvn
+
 java -version
 
 case "$TEST" in
