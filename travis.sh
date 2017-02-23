@@ -13,6 +13,9 @@ installTravisTools
 
 java -version
 
+./bbl.sh
+exit 0
+
 case "$TEST" in
 
 ci)
