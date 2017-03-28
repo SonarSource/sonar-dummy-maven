@@ -1,4 +1,4 @@
-# sonar-dummy
+## sonar-dummy
 ###
 ## Build status
 
