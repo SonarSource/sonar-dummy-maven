@@ -9,6 +9,7 @@ function installTravisTools {
 }
 
 installTravisTools
+cancel_branch_build_with_pr
 . installJDK8
 
 java -version
