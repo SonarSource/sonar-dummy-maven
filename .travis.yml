@@ -18,10 +18,10 @@ cache:
     - '$HOME/.m2/repository'
     - '$HOME/jvm'
 
-notifications:
-  on_start: always
+notifications:  
   email: false
   webhooks:
-    - secure: "eyuHlBrxdKwH3F0l+tmFNNOLaxdSHFllS1c5bkETYcu/64n7+QE9PlDoWGlwd4GGmGTI6YvosEsQJieT1uPZHjXDBc9jHkeVKxQ3jN0NrZV9r3kwBTMO/uPvSomtMkXEpiQioQT69V9lVU2Sr5Qq/B6zv6R6P+7VNRk5rpOwgtc="
-    - secure: "OQCvVJNZcyGJLWylcL2NccRPfChSRnuoQRiUPbfDrY3uQTl5MDLdIz8o/SwjGWn9kgycvFhY2Cvt/8KYFkh/dmVlNDAAT8j7Vpxjj+sty4sAAV/uBmuT62siSQbJQj06RP4qKqPWFLoEjb5enB6jO8HQxF+Yv0iIw0kf8lRQ5GQ="
+    urls:
+      - secure: "Z+kQRaMkYW0OqDCfZPpx/JwJIqJw1ZkbfKLgr6a4bzwjypTQ/UmrLk1LdugMoQmNMnXmkVUXujLvcXoCUZb+jJ4HxG72VgUybJs8Ee94lhIuj9UT5c41SUX83mI3SIYH6kz1B2El3JUJRpeC7M52XA2g7S5QSUamOPT+pI/PVuM="
+    on_start: always
 
