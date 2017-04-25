@@ -23,6 +23,6 @@ notifications:
   webhooks:
     urls:
       - secure: "Z+kQRaMkYW0OqDCfZPpx/JwJIqJw1ZkbfKLgr6a4bzwjypTQ/UmrLk1LdugMoQmNMnXmkVUXujLvcXoCUZb+jJ4HxG72VgUybJs8Ee94lhIuj9UT5c41SUX83mI3SIYH6kz1B2El3JUJRpeC7M52XA2g7S5QSUamOPT+pI/PVuM="
-      - secure: "f4XdiKFk8AtWlt3oS+RlDgQIHA8w3odyNlSGkSwCgc0HgXFVdFHTnNTJrMB4Acn182Xpbm2Z56HewLP9UsXl4BCoEIUeuQYBMd1bxS/cCTOBrzWParwrtBTxGVoRR+QKiwjWbXkKv4f6TnXunsiZ2NaaQoywEASM+a5YjAKXB6k="
+      - secure: "af1AEJqvjJ50HsLmN9jlIC53wYeO3WS0BZU6Ids6fomRBNGohvFLCZE3nszzn+ChNq6em80OQdDWfgd48MIa58YvKGMLLejywqI7S/p8RPI7ic+wWetMYuZl06/0hgBpvBjBCWVGIhJcC5evefMuLnOp6+EEXHF6kGjrJx27ZvI="
     on_start: always
 
