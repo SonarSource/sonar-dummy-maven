@@ -23,6 +23,6 @@ notifications:
   webhooks:
     urls:
       - secure: "Z+kQRaMkYW0OqDCfZPpx/JwJIqJw1ZkbfKLgr6a4bzwjypTQ/UmrLk1LdugMoQmNMnXmkVUXujLvcXoCUZb+jJ4HxG72VgUybJs8Ee94lhIuj9UT5c41SUX83mI3SIYH6kz1B2El3JUJRpeC7M52XA2g7S5QSUamOPT+pI/PVuM="
-      - https://travis:password@requestb.in/vnpy0uvn
+      - "https://travis:password@requestb.in/vnpy0uvn"
     on_start: always
 
