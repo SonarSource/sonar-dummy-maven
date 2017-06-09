@@ -20,6 +20,7 @@ public final class DummyPlugin extends SonarPlugin {
   
   public String sayHello() {
     System.out.println("hello");
+    System.out.println("world");
     return "hello";
   }
 
