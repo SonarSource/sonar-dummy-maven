@@ -9,7 +9,7 @@ function installTravisTools {
 }
 
 installTravisTools
-cancel_branch_build_with_pr
+cancel_branch_build_with_pr || if [[ $? -eq 1 ]]; then exit 0; fi
 . installJDK8
 
 java -version
