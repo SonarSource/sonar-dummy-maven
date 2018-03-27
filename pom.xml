@@ -25,7 +25,7 @@
   <properties>  
     <sonarVersion>4.5.7</sonarVersion>  
     <gitRepositoryName>sonar-dummy</gitRepositoryName>
-    <artifactsToDownload>${project.groupId}:sonar-dummy-plugin:jar</artifactsToDownload>    
+    <artifactsToPublish>${project.groupId}:sonar-dummy-plugin:jar</artifactsToPublish>    
   </properties>
 
   <modules>
