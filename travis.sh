@@ -4,7 +4,7 @@ set -euo pipefail
 
 function installTravisTools {
   mkdir -p ~/.local
-  curl -sSL https://github.com/SonarSource/travis-utils/tarball/v50 | tar zx --strip-components 1 -C ~/.local
+  curl -sSL https://github.com/SonarSource/travis-utils/tarball/f7ce6e2d4d46f973df649f223748709537e69318 | tar zx --strip-components 1 -C ~/.local
   source ~/.local/bin/install
 }
 
