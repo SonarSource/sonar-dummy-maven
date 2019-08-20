@@ -1,4 +1,4 @@
-gcp_credentials: ENCRYPTED[5593a03ea57f96db548de7791bfcaef42c9394506aa7f4fbe246841ff346f4fae60be3e30c12a051388d5486d10399dc]
+gcp_credentials: ENCRYPTED[f99ac0a8f67940d0a6ebfa7cc006074cb97fcda4ae9a26f2ee99041d292c5726ba35895d59d7b000d08e392d06d633ea]
 
 linux_task:
   gce_instance:
