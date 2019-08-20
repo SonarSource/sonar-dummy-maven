@@ -1,0 +1,27 @@
+gcp_credentials: ENCRYPTED[5593a03ea57f96db548de7791bfcaef42c9394506aa7f4fbe246841ff346f4fae60be3e30c12a051388d5486d10399dc]
+
+linux_task:
+  gce_instance:
+    image_project: cix-94919
+    image_name: linux-java
+    zone: europe-west3-a
+    preemptible: true
+    cpu: 2
+    memory: 2G
+    disk: 10
+  build_script:
+    - mvn clean install
+
+promote_task:
+  depends_on:
+    - linux
+  gce_instance:
+    image_project: cix-94919
+    image_name: linux-java
+    zone: europe-west3-a
+    preemptible: true
+    cpu: 1
+    memory: 1G
+    disk: 10
+  script:
+    - echo "promote"
