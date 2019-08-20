@@ -27,7 +27,14 @@ linux_task:
     memory: 2G
     disk: 10
   build_script:
-    - mvn clean install
+    - . ./cirrus/cirrus-env.sh BUILD
+    - echo $BUILD_NUMBER
+    - mvn deploy sonar:sonar \
+      -Pcoverage,deploy-sonarsource,release \
+      -Dmaven.test.redirectTestOutputToFile=false \
+      -Dsonar.host.url=$SONAR_HOST_URL \
+      -Dsonar.login=$SONAR_TOKEN 
+      -B -e -V $*
 
 promote_task:
   depends_on:
