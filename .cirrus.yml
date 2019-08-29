@@ -29,6 +29,7 @@ linux_task:
   build_script:
     - . ./cirrus/cirrus-env.sh BUILD
     - echo $BUILD_NUMBER
+    - python setBuildVersion.py
     - mvn deploy sonar:sonar -Pcoverage,deploy-sonarsource,release -Dmaven.test.redirectTestOutputToFile=false -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONAR_TOKEN -B -e -V $*
 
 promote_task:
