@@ -13,7 +13,12 @@ def getProjectVersion():
 
 def setProjectVersion(version):
   print("Build version is "+version)
-  subprocess.Popen(["mvn org.codehaus.mojo:versions-maven-plugin:2.5:set -DnewVersion={version}".format(version=version)], shell=True)
+  p = subprocess.Popen(["mvn org.codehaus.mojo:versions-maven-plugin:2.5:set -DnewVersion={version}".format(version=version)], shell=True,
+      stdout = subprocess.PIPE,
+      stderr = subprocess.PIPE)
+  out,err = p.communicate()
+  for line in out.decode().split('\n'):
+    print(line)      
 
 
 currentVersion=getProjectVersion()
