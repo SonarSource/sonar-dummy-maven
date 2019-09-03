@@ -7,6 +7,7 @@ export GIT_SHA1=$CIRRUS_CHANGE_IN_REPO
 export GITHUB_BASE_BRANCH=${CIRRUS_BASE_BRANCH:-}
 export GITHUB_BRANCH=$CIRRUS_BRANCH
 export GITHUB_REPO=${CIRRUS_REPO_FULL_NAME}
+export PROJECT=${CIRRUS_REPO_NAME}
 export PULL_REQUEST=${CIRRUS_PR:-}
 
 export LANG=C.UTF-8
@@ -22,5 +23,5 @@ if [ "$TASK_TYPE" == "BUILD" ]; then
 else
   export BUILD_NUMBER=$(cirrusBuildNumber)
 fi
-
+export BUILD_ID=${BUILD_NUMBER}
 printenv | grep -v -e USERNAME -e PASSWORD -e KEY -e TOKEN | sort

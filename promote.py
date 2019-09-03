@@ -1,4 +1,6 @@
 import os
+import requests
+import json
 
 print("PULL_REQUESTinPR: " + os.environ['PULL_REQUEST'])
 print("GITHUB_BRANCH: " + os.environ['GITHUB_BRANCH'])
@@ -15,25 +17,35 @@ if os.environ['PULL_REQUEST']:
   publicTargetRepo="sonarsource-public-dev"
   status="it-passed-pr"
 else:
+  print("NOT in PR")
   if os.environ['GITHUB_BRANCH'] == "master" or os.environ['GITHUB_BRANCH'].startswith("branch-"):
-    print("NOT in PR")
+    print("master or release branch detected")
     privateTargetRepo='sonarsource-private-builds'
     publicTargetRepo="sonarsource-public-builds"
     status="it-passed"
 
-print(status)
-
-"""  
-if [[ "${STATUS:-}" ]]; then
-  echo "Promoting build $CIRRUS_REPO_NAME#$BUILD_NUMBER"
-  json_payload='{
-      "status": "'"$STATUS"'",
-      "targetRepo": "'"$PUBLIC_TARGET_REPO"'"
-    }'
+print(f"status:{status}")
+ 
+if status:
+  print(f"Promoting build {os.environ['PROJECT']}#{os.environ['BUILD_NUMBER']}")
+  json_payload={
+      "status": f"{status}",
+      "targetRepo": f"{privateTargetRepo}"
+  }
+  print(json_payload)
+  url = f"{os.environ['ARTIFACTORY_URL']}/api/build/promote/{os.environ['PROJECT']}/{os.environ['BUILD_NUMBER']}"
+  headers = {'content-type': 'application/json', 'X-JFrog-Art-Api': '{ARTIFACTORY_API_KEY}'.format(ARTIFACTORY_API_KEY=os.environ['ARTIFACTORY_API_KEY'])}
+  r = requests.post(url, data=json.dumps(json_payload), headers=headers)
+  print(f"promotion http_code: {r.status_code} json: {r.json} text: {r.text}")
+  
+else:
+  print(f"status is: {status}")
+"""
+.format(ARTIFACTORY_URL=os.environ['ARTIFACTORY_URL'],GITHUB_REPO=os.environ['GITHUB_REPO'],BUILD_NUMBER=os.environ['BUILD_NUMBER'])  
   HTTP_CODE=$(curl -s -o /dev/null -w %{http_code} \
       -H "X-JFrog-Art-Api:${ARTIFACTORY_API_KEY}" \
       -H "Content-type: application/json" \
-      "$ARTIFACTORY_URL/api/build/promote/$CIRRUS_REPO_NAME/$BUILD_NUMBER" \
+      "$ARTIFACTORY_URL/api/build/promote/$PROJECT/$BUILD_NUMBER" \
       -d "$json_payload")
   if [[ "$HTTP_CODE" != "200" ]]; then
     echo "Cannot promote build $CIRRUS_REPO_NAME#$BUILD_NUMBER: ($HTTP_CODE)"
