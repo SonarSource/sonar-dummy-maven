@@ -1,6 +1,6 @@
 import os
 
-print("PULL_REQUEST: " + os.environ['PULL_REQUEST'])
+print("PULL_REQUESTinPR: " + os.environ['PULL_REQUEST'])
 print("GITHUB_BRANCH: " + os.environ['GITHUB_BRANCH'])
 print("GITHUB_REPO: " + os.environ['GITHUB_REPO'])
 print("BUILD_NUMBER: " + os.environ['BUILD_NUMBER'])
