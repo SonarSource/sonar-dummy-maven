@@ -45,4 +45,5 @@ promote_task:
     memory: 1G
     disk: 10
   script:
-    - echo "promote"
+    - . ./cirrus/cirrus-env.sh BUILD
+    - python promote.py
