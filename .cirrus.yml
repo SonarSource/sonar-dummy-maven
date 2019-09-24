@@ -25,7 +25,7 @@ linux_task:
     builder_image_name: docker-builder-v1
     cluster_name: cirrus-ci-lt-cluster
     zone: us-central1-a
-    preemptible: true
+    namespace: default
     cpu: 2
     memory: 2G
     disk: 10
@@ -44,7 +44,7 @@ promote_task:
     builder_image_name: docker-builder-v1
     cluster_name: cirrus-ci-lt-cluster
     zone: us-central1-a
-    preemptible: true
+    namespace: default
     cpu: 1
     memory: 1G
     disk: 10
