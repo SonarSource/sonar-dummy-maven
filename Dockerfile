@@ -16,6 +16,7 @@ FROM maven:3.6-jdk-11
 
 USER root
 
+RUN apt-get update && apt-get -y install python3
 RUN groupadd -r sonarsource && useradd -r -g sonarsource sonarsource
 
 COPY settings.xml /etc/maven/settings.xml
