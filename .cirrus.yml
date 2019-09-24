@@ -19,10 +19,12 @@ env:
   #BURGR_PASSWORD: ENCRYPTED[218cb20174dcd17109819426fa1132be3106d73d06ccd90cf230b0b0f253d3678dd21497f4b9ccace5b9faf6f8e41bf5]
 
 linux_task:
-  gce_instance:
-    image_project: cix-94919
-    image_name: linux-java
-    zone: europe-west3-a
+  gke_container:
+    dockerfile: Dockerfile
+    builder_image_project: language-team
+    builder_image_name: docker-builder-v1
+    cluster_name: cirrus-ci-lt-cluster
+    zone: us-central1-a
     preemptible: true
     cpu: 2
     memory: 2G
@@ -36,10 +38,12 @@ linux_task:
 promote_task:
   depends_on:
     - linux
-  gce_instance:
-    image_project: cix-94919
-    image_name: linux-java
-    zone: europe-west3-a
+  gke_container:
+    dockerfile: Dockerfile
+    builder_image_project: language-team
+    builder_image_name: docker-builder-v1
+    cluster_name: cirrus-ci-lt-cluster
+    zone: us-central1-a
     preemptible: true
     cpu: 1
     memory: 1G
