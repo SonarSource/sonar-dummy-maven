@@ -24,7 +24,7 @@ linux_task:
     builder_image_project: language-team
     builder_image_name: docker-builder-v1
     cluster_name: cirrus-ci-lt-cluster
-    zone: us-central1-a
+    zone: europe-west3-a
     namespace: default
     cpu: 2
     memory: 2G
@@ -42,7 +42,7 @@ promote_task:
     builder_image_project: language-team
     builder_image_name: docker-builder-v1
     cluster_name: cirrus-ci-lt-cluster
-    zone: us-central1-a
+    zone: europe-west3-a
     namespace: default
     cpu: 1
     memory: 1G
