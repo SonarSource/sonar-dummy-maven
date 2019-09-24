@@ -16,9 +16,6 @@ FROM maven:3.6-jdk-11
 
 USER root
 
-# Avoiding JVM Delays Caused by Random Number Generation (https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmrand.html)
-RUN sed -i 's|securerandom.source=file:/dev/random|securerandom.source=file:/dev/urandom|g' $JAVA_HOME/jre/lib/security/java.security
-RUN apt-get update && apt-get -y install xvfb
 RUN groupadd -r sonarsource && useradd -r -g sonarsource sonarsource
 
 COPY settings.xml /etc/maven/settings.xml
