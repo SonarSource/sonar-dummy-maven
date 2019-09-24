@@ -22,7 +22,6 @@ linux_task:
   gke_container:
     dockerfile: Dockerfile
     builder_image_project: language-team
-    builder_image_name: docker-builder-v1
     cluster_name: cirrus-ci-lt-cluster
     zone: us-central1-a
     namespace: default
@@ -40,7 +39,6 @@ promote_task:
   gke_container:
     dockerfile: Dockerfile
     builder_image_project: language-team
-    builder_image_name: docker-builder-v1
     cluster_name: cirrus-ci-lt-cluster
     zone: us-central1-a
     namespace: default
