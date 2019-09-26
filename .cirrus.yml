@@ -37,4 +37,4 @@ linux_task:
     - python3 setBuildVersion.py
     - mvn deploy sonar:sonar -Pcoverage,deploy-sonarsource,release -Dmaven.test.redirectTestOutputToFile=false -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONAR_TOKEN -B -e -V $*
     - curl -s -H "Authorization: Bearer $ACCESS_TOKEN" "$PROMOTE_URL/$GITHUB_REPO/$GITHUB_BRANCH/$BUILD_NUMBER/$PULL_REQUEST"
-    - ./cirrus/burgr-notify-promotion.sh
+    #- ./cirrus/burgr-notify-promotion.sh
