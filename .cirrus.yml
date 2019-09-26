@@ -36,5 +36,21 @@ linux_task:
     - echo $BUILD_NUMBER
     - python3 setBuildVersion.py
     - mvn deploy sonar:sonar -Pcoverage,deploy-sonarsource,release -Dmaven.test.redirectTestOutputToFile=false -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONAR_TOKEN -B -e -V $*
+
+promote_task:
+  depends_on:
+    - linux
+  gke_container:
+    dockerfile: Dockerfile
+    builder_image_project: language-team
+    builder_image_name: docker-build-lt-v1
+    cluster_name: cirrus-ci-lt-cluster
+    zone: us-central1-a
+    namespace: default
+    cpu: 1
+    memory: 1G
+  script:
+    - . ./cirrus/cirrus-env.sh PROMOTE
+    #- python3 setBuildVersion.py
     - curl -s -H "Authorization: Bearer $ACCESS_TOKEN" "$PROMOTE_URL/$GITHUB_REPO/$GITHUB_BRANCH/$BUILD_NUMBER/$PULL_REQUEST"
     #- ./cirrus/burgr-notify-promotion.sh
