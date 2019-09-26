@@ -17,8 +17,12 @@ def setProjectVersion(version):
       stdout = subprocess.PIPE,
       stderr = subprocess.PIPE)
   out,err = p.communicate()
-  for line in out.decode().split('\n'):
-    print(line)      
+  #write version to a file for burgr notification
+  f = open("version.txt", "w")
+  f.write(version)
+  f.close()
+  #for line in out.decode().split('\n'):
+  #  print(line)      
 
 
 currentVersion=getProjectVersion()
