@@ -49,6 +49,8 @@ promote_task:
     namespace: default
     cpu: 1
     memory: 1G
+  maven_cache:
+    folder: ~/.m2     
   script:
     - . ./cirrus/cirrus-env.sh PROMOTE
     - python3 setBuildVersion.py
