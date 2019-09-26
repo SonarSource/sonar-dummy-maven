@@ -48,4 +48,5 @@ promote_task:
     memory: 1G
   script:
     - . ./cirrus/cirrus-env.sh PROMOTE
+    - echo "https://us-central1-cix-94919.cloudfunctions.net/promote?PROJECT=$PROJECT&PULL_REQUEST=$PULL_REQUEST&GITHUB_BRANCH=$GITHUB_BRANCH&BUILD_NUMBER=$BUILD_NUMBER"
     - curl -s "https://us-central1-cix-94919.cloudfunctions.net/promote?PROJECT=$PROJECT&PULL_REQUEST=$PULL_REQUEST&GITHUB_BRANCH=$GITHUB_BRANCH&BUILD_NUMBER=$BUILD_NUMBER"
