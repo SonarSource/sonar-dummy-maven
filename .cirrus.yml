@@ -28,6 +28,8 @@ linux_task:
     namespace: default
     cpu: 2
     memory: 2G
+  maven_cache:
+    folder: ~/.m2  
   build_script:
     - . ./cirrus/cirrus-env.sh BUILD
     - echo $BUILD_NUMBER
@@ -48,5 +50,5 @@ promote_task:
     memory: 1G
   script:
     - . ./cirrus/cirrus-env.sh PROMOTE
-    - echo "https://us-central1-cix-94919.cloudfunctions.net/promote/SonarSource/$PROJECT/$GITHUB_BRANCH/$BUILD_NUMBER&PULL_REQUEST=$PULL_REQUEST"
-    - curl -s "https://us-central1-cix-94919.cloudfunctions.net/promote/SonarSource/$PROJECT/$GITHUB_BRANCH/$BUILD_NUMBER&PULL_REQUEST=$PULL_REQUEST"
+    - echo "https://us-central1-language-team.cloudfunctions.net/promote/SonarSource/$PROJECT/$GITHUB_BRANCH/$BUILD_NUMBER/$PULL_REQUEST"
+    - curl -s "https://us-central1-language-team.cloudfunctions.net/promote/SonarSource/$PROJECT/$GITHUB_BRANCH/$BUILD_NUMBER/$PULL_REQUEST"
