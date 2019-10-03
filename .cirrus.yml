@@ -32,7 +32,7 @@ linux_task:
   maven_cache:
     folder: ~/.m2  
   build_script:
-    - curl -sSL https://github.com/SonarSource/buildTools/tarball/053b5e35fc5cf5460606397652aed55d03525371 | tar zx --strip-components 1 -C ~/
+    - curl -sSL https://github.com/SonarSource/buildTools/tarball/053b5e35fc5cf5460606397652aed55d03525371 | tar zx --strip-components 1 -C .
     - . ./cirrus/cirrus-env.sh BUILD
     - echo $BUILD_NUMBER
     - python3 setBuildVersion.py
