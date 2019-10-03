@@ -21,4 +21,5 @@ RUN groupadd -r sonarsource && useradd -r -m -g sonarsource sonarsource
 
 COPY settings.xml /usr/share/maven/conf/settings.xml
 
+ENV MAVEN_CONFIG "/home/sonarsource/.m2"
 USER sonarsource
