@@ -37,7 +37,7 @@ linux_task:
     - echo $BUILD_NUMBER
     - python3 setBuildVersion.py
     #- mvn deploy sonar:sonar -Pcoverage,deploy-sonarsource,release -Dmaven.test.redirectTestOutputToFile=false -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONAR_TOKEN -B -e -V $*
-    - regular_mvn_build_deploy_analyse
+    - ./regular_mvn_build_deploy_analyse
 
 promote_task:
   depends_on:
