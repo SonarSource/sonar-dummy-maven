@@ -36,7 +36,7 @@ linux_task:
     - curl -sSL https://github.com/SonarSource/buildTools/tarball/master | tar zx --strip-components 1 -C .
     - . ./cirrus/cirrus-env.sh BUILD
     - echo $BUILD_NUMBER
-    - python3 setBuildVersion.py
+    #- python3 setBuildVersion.py
     #- mvn deploy sonar:sonar -Pcoverage,deploy-sonarsource,release -Dmaven.test.redirectTestOutputToFile=false -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONAR_TOKEN -B -e -V $*
     - ./regular_mvn_build_deploy_analyse
 
