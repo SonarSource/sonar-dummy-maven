@@ -24,8 +24,6 @@ env:
   #allow deployment of pull request artifacts to repox
   DEPLOY_PULL_REQUEST: true
 
-registry_config: ENCRYPTED[!3d6a89cc22900c7e8081b9816e4cc5cde16f2ffcf605fb16c1d7c4e368a13e1f27471dd5b74ed24e1aa28438ea530f05!]
-
 linux_task:
   gke_container:
     image: gcr.io/language-team/base:v0
