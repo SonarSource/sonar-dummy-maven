@@ -26,7 +26,7 @@ env:
 
 linux_task:
   gke_container:
-    image: gcr.io/language-team/base:v0
+    image: gcr.io/language-team/base:v1
     cluster_name: cirrus-ci-lt-cluster
     zone: us-central1-a
     namespace: default
@@ -43,7 +43,7 @@ promote_task:
   depends_on:
     - linux
   gke_container:
-    image: gcr.io/language-team/base:v0
+    image: gcr.io/language-team/base:v1
     cluster_name: cirrus-ci-lt-cluster
     zone: us-central1-a
     namespace: default
