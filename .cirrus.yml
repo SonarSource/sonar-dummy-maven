@@ -34,8 +34,8 @@ linux_task:
     namespace: default
     cpu: 2
     memory: 2G
-  maven_cache:
-    folder: ~/.m2  
+  #maven_cache:
+  #  folder: ~/.m2  
   build_script:
     - source cirrus-env BUILD
     - source set_maven_build_version $BUILD_NUMBER
