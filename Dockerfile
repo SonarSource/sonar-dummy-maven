@@ -12,7 +12,8 @@
 # to Google Cloud Container Registry. See section "gke_container" of .cirrus.yml
 #------------------------------------------------------------------------------
 
-FROM gcr.io/language-team/base:v1
+#FROM gcr.io/language-team/base:v1
+FROM maven:3.6-jdk-11
 
 USER root
 
