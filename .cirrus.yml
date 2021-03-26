@@ -64,7 +64,7 @@ build_task:
 build_win_task:
   <<: *WINDOWS_VM_DEFINITION
   build_script:
-    - source cirrus-env CI-PRIVATE
+    - source cirrus-env BUILD-PRIVATE
     - mvn.cmd test
     
 promote_task:
