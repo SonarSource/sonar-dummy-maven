@@ -1,8 +1,8 @@
 #for language-team gcp project
-#gcp_credentials: ENCRYPTED[!17c59813193e86cc337bce848b358412b90f50bc5fe1b8b39d363cdf14a41ebe76cfba0482e7f81d076994b9f6dbfb4c!]
+gcp_credentials: ENCRYPTED[!17c59813193e86cc337bce848b358412b90f50bc5fe1b8b39d363cdf14a41ebe76cfba0482e7f81d076994b9f6dbfb4c!]
 
 #for language-team-staging gcp project
-gcp_credentials: ENCRYPTED[!1381ef0f0c48f6705097f17299114c40c859181fdca68834bf429446de4142f216a4e9c714bbdad9ad87947ad0ddd4c6!]
+#gcp_credentials: ENCRYPTED[!1381ef0f0c48f6705097f17299114c40c859181fdca68834bf429446de4142f216a4e9c714bbdad9ad87947ad0ddd4c6!]
 #test-cirrus 
 #gcp_credentials: ENCRYPTED[!af138a5aa099fbf14e2683d14deecf93fa8fbb3501fa07a96de500c77b942ed9a6b58bf63971bbbafd93620083038129!]
 env:
