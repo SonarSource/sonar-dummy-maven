@@ -25,7 +25,7 @@ env:
   CIRRUS_SHELL: bash
 
 container_definition: &CONTAINER_DEFINITION
-  image: gcr.io/language-team/base:latest
+  image: gcr.io/language-team/base:PR_37
   #cluster_name: cirrus-ci-lt-cluster
   cluster_name: cirrus-ci-lt-cluster
   zone: us-central1-a
@@ -72,7 +72,7 @@ build_task:
     folder: ${CIRRUS_WORKING_DIR}/.m2/repository 
   build_script:
     - source cirrus-env BUILD-PRIVATE
-    - regular_mvn_build_deploy_analyze -Psign
+    - regular_mvn_build_deploy_analyze
   cleanup_before_cache_script: cleanup_maven_repository
 
 build_win_task:
@@ -88,8 +88,8 @@ promote_task:
   <<: *ONLY_SONARSOURCE_QA
   gke_container:
     <<: *CONTAINER_DEFINITION
-    cpu: 0.5
-    memory: 500M
+    cpu: 1
+    memory: 1G
   env:
     #promotion cloud function
     GCF_ACCESS_TOKEN: ENCRYPTED[!1fb91961a5c01e06e38834e55755231d649dc62eca354593105af9f9d643d701ae4539ab6a8021278b8d9348ae2ce8be!]
@@ -97,7 +97,6 @@ promote_task:
     #artifacts that will have downloadable links in burgr
     ARTIFACTS: com.sonarsource.dummy:sonar-dummy-plugin:jar
   maven_cache:
-    folder: ${CIRRUS_WORKING_DIR}/.m2/repository 
+    folder: ${CIRRUS_WORKING_DIR}/.m2/repository
   script: cirrus_promote_maven
   cleanup_before_cache_script: cleanup_maven_repository
-  
