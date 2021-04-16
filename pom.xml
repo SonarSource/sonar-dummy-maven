@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.sonarsource.parent</groupId>
     <artifactId>parent</artifactId>
-    <version>49</version>
+    <version>52.0.5</version>
   </parent>
 
   <groupId>com.sonarsource.dummy</groupId>
@@ -27,7 +27,7 @@
     <gitRepositoryName>sonar-dummy</gitRepositoryName>
     <artifactsToPublish>${project.groupId}:sonar-dummy-plugin:jar</artifactsToPublish>    
 
-    <version.gpg.plugin>0.3.1</version.gpg.plugin>
+    
   </properties>
 
   <modules>
@@ -78,18 +78,6 @@
     </dependencies>
   </dependencyManagement>
 
- <build>
-  <pluginManagement>
-    <plugins>
-      <plugin>
-        <groupId>org.simplify4u.plugins</groupId>
-        <artifactId>sign-maven-plugin</artifactId>
-        <version>${version.gpg.plugin}</version>
-      </plugin>
-    </plugins>
-  </pluginManagement>
-</build>
-
   <scm>
     <connection>scm:git:git@github.com:SonarSource/sonar-dummy.git</connection>
     <developerConnection>scm:git:git@github.com:SonarSource/sonar-dummy.git</developerConnection>
@@ -101,30 +89,5 @@
     <system>JIRA</system>
     <url>https://jira.sonarsource.com/browse/TP</url>
   </issueManagement>
-  <profiles>
-    <profile>
-      <id>sign</id>      
-      <build>
-        <plugins>          
-          <plugin>
-            <groupId>org.simplify4u.plugins</groupId>
-            <artifactId>sign-maven-plugin</artifactId>
-            <version>${version.gpg.plugin}</version>
-            <executions>
-              <execution>
-                <id>sign-artifacts</id>
-                <phase>verify</phase>
-                <goals>
-                  <goal>sign</goal>
-                </goals>
-                <configuration>
-                  <keyPass>${env.PGP_PASSPHRASE}</keyPass>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>  
-  </profiles>  
+  
 </project>

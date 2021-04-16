@@ -25,7 +25,7 @@ env:
   CIRRUS_SHELL: bash
 
 container_definition: &CONTAINER_DEFINITION
-  image: gcr.io/language-team/base:PR_37
+  image: gcr.io/language-team/base:latest
   #cluster_name: cirrus-ci-lt-cluster
   cluster_name: cirrus-ci-lt-cluster
   zone: us-central1-a
