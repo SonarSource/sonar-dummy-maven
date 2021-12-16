@@ -1,5 +1,5 @@
-#for language-team gcp project
-gcp_credentials: ENCRYPTED[!17c59813193e86cc337bce848b358412b90f50bc5fe1b8b39d363cdf14a41ebe76cfba0482e7f81d076994b9f6dbfb4c!]
+#for release-engineering-ci-staging
+gcp_credentials: ENCRYPTED[aebc0a5ebae9bfa7262fed18dc181d97db901420322b0483a8c8e04751ecde508c8eefbef3e85d17d5e2bdb829c117cb]
 
 #for language-team-staging gcp project
 #gcp_credentials: ENCRYPTED[!1381ef0f0c48f6705097f17299114c40c859181fdca68834bf429446de4142f216a4e9c714bbdad9ad87947ad0ddd4c6!]
@@ -25,18 +25,17 @@ env:
   CIRRUS_SHELL: bash
 
 container_definition: &CONTAINER_DEFINITION
-  image: gcr.io/language-team/base:latest
-  #cluster_name: cirrus-ci-lt-cluster
-  cluster_name: cirrus-ci-lt-cluster
-  zone: us-central1-a
+  image: eu.gcr.io/release-engineering-ci-staging/base:j11-latest
+  cluster_name: cirrus-ci-staging	
+  zone: europe-west4-b
   namespace: default
 
 win_vm_definition: &WINDOWS_VM_DEFINITION
   gce_instance:
-    image_project: language-team
-    image_family: lt-base-windows
+    image_project: release-engineering-ci-staging
+    image_family: lt-base-windows-jdk11
     platform: windows
-    zone: us-central1-a
+    zone: europe-west4-b
     preemptible: false
     disk: 60
     type: n1-standard-4
@@ -47,8 +46,8 @@ only_sonarsource_qa: &ONLY_SONARSOURCE_QA
 build_task:
   gke_container:
     image: gradle:jdk8
-    cluster_name: cirrus-ci-lt-cluster
-    zone: us-central1-a
+    cluster_name: cirrus-ci-staging
+    zone: europe-west4-b
     namespace: default
     cpu: 1
     memory: 1GB
