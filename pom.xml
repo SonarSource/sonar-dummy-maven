@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.sonarsource.parent</groupId>
     <artifactId>parent</artifactId>
-    <version>53.0.19</version>
+    <version>56.0.52</version>
   </parent>
 
   <groupId>com.sonarsource.dummy</groupId>
@@ -26,8 +26,6 @@
     <sonarVersion>4.5.7</sonarVersion>  
     <gitRepositoryName>sonar-dummy</gitRepositoryName>
     <artifactsToPublish>${project.groupId}:sonar-dummy-plugin:jar</artifactsToPublish>    
-
-    
   </properties>
 
   <modules>

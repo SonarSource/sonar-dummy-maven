@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014-2021 SonarSource SA
+ * Copyright (C) 2014-2022 SonarSource SA
  * All rights reserved
  * mailto:info AT sonarsource DOT com
  */
