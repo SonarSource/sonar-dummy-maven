@@ -45,17 +45,6 @@ only_sonarsource_qa: &ONLY_SONARSOURCE_QA
 
 build_task:
   gke_container:
-    image: gradle:jdk8
-    cluster_name: cirrus-ci-staging
-    zone: europe-west4-b
-    namespace: default
-    cpu: 1
-    memory: 1GB
-  script:
-    - echo "Hello world"
-
-build_task:
-  gke_container:
     <<: *CONTAINER_DEFINITION
     cpu: 2
     memory: 2G
@@ -74,16 +63,16 @@ build_task:
     - regular_mvn_build_deploy_analyze
   cleanup_before_cache_script: cleanup_maven_repository
 
-build_win_task:
-  <<: *WINDOWS_VM_DEFINITION
-  build_script:
-    - source cirrus-env CI-PRIVATE
-    - mvn.cmd test
+#build_win_task:
+#  <<: *WINDOWS_VM_DEFINITION
+#  build_script:
+#    - source cirrus-env CI-PRIVATE
+#    - mvn.cmd test
    
 promote_task:
   depends_on:
     - build
-    - build_win
+#    - build_win
   <<: *ONLY_SONARSOURCE_QA
   gke_container:
     <<: *CONTAINER_DEFINITION
