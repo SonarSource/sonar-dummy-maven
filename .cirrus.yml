@@ -64,16 +64,21 @@ build_task:
     - regular_mvn_build_deploy_analyze
   cleanup_before_cache_script: cleanup_maven_repository
 
-#build_win_task:
-#  <<: *WINDOWS_VM_DEFINITION
-#  build_script:
-#    - source cirrus-env CI-PRIVATE
-#    - mvn.cmd test
-   
+build_win_task:
+  <<: *ONLY_SONARSOURCE_QA
+  <<: *WINDOWS_VM_DEFINITION
+  maven_cache:
+    #windows cache is buggy if using ${CIRRUS_WORKING_DIR}
+    folder: ~/.m2/repository
+  build_script:
+    - source cirrus-env CI-PRIVATE
+    - mvn.cmd test
+  cleanup_before_cache_script: cleanup_maven_repository
+
 promote_task:
   depends_on:
     - build
-#    - build_win
+    - build_win
   <<: *ONLY_SONARSOURCE_QA
   gke_container:
     <<: *CONTAINER_DEFINITION
