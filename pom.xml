@@ -15,17 +15,17 @@
 
   <name>SonarSource :: dummy</name>
   <inceptionYear>2014</inceptionYear>
-  
+
   <licenses>
     <license>
       <name>SonarSource</name>
     </license>
   </licenses>
 
-  <properties>  
-    <sonarVersion>4.5.7</sonarVersion>  
+  <properties>
+    <sonarVersion>4.5.7</sonarVersion>
     <gitRepositoryName>sonar-dummy</gitRepositoryName>
-    <artifactsToPublish>${project.groupId}:sonar-dummy-plugin:jar,${project.groupId}:${project.artifactId}:json:cyclonedx</artifactsToPublish>    
+    <artifactsToPublish>${project.groupId}:sonar-dummy-plugin:jar,${project.groupId}:${project.artifactId}:json:cyclonedx</artifactsToPublish>
   </properties>
 
   <modules>
@@ -66,7 +66,7 @@
         <version>1.4</version>
         <scope>test</scope>
       </dependency>
-      
+
       <dependency>
         <groupId>com.sonarsource.plugins.license</groupId>
         <artifactId>license-api</artifactId>
@@ -82,7 +82,7 @@
     <url>https://github.com/SonarSource/sonar-dummy</url>
     <tag>6.1.2</tag>
   </scm>
-  
+
   <issueManagement>
     <system>JIRA</system>
     <url>https://jira.sonarsource.com/browse/TP</url>
@@ -117,5 +117,5 @@
       </plugin>
     </plugins>
   </build>
-  
+
 </project>

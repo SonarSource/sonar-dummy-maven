@@ -11,12 +11,12 @@ http://maven.apache.org/xsd/settings-1.0.0.xsd">
         <wagonProvider>httpclient</wagonProvider>
         <httpConfiguration>
           <all>
-            <params> 
+            <params>
               <param>
-                <name>http.authentication.preemptive</name> 
-                <value>%b,false</value> 
-              </param> 
-            </params> 
+                <name>http.authentication.preemptive</name>
+                <value>%b,false</value>
+              </param>
+            </params>
             <usePreemptive>true</usePreemptive>
           </all>
         </httpConfiguration>

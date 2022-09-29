@@ -22,7 +22,7 @@ def setProjectVersion(version):
   f.write(version)
   f.close()
   #for line in out.decode().split('\n'):
-  #  print(line)      
+  #  print(line)
 
 
 currentVersion=getProjectVersion()
@@ -42,5 +42,3 @@ while digitSeparatorCount < 2:
 releaseVersion += "." + buildNumber
 
 setProjectVersion(releaseVersion)
-
-      
