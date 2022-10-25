@@ -1,4 +1,6 @@
 load("cirrus", "env", "fs")
+load(".cirrus/lib.star", "auth", "parse")
+# load("github.com/SonarSource/sonar-dummy", "creds")
 
 def main(ctx):
-    return fs.read(".cirrus.aws.yml") + fs.read(".cirrus.build.yml")
+    return auth() + parse(".cirrus/build.yml")

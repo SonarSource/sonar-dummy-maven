@@ -19,6 +19,20 @@ env:
   # Use bash (instead of sh on linux or cmd.exe on Windows)
   CIRRUS_SHELL: bash
 
+eks_container: &CONTAINER_DEFINITION
+  image: ${CIRRUS_AWS_ACCOUNT}.dkr.ecr.eu-central-1.amazonaws.com/base:j11-latest
+  cluster_name: CirrusCI
+  region: eu-central-1
+  namespace: default
+
+ec2_instance: &INSTANCE_DEFINITION
+  experimental: true # see https://github.com/cirruslabs/cirrus-ci-docs/issues/1051
+  region: eu-central-1
+  subnet_id: ${CIRRUS_AWS_SUBNET}
+  type: t2.xlarge
+  image: lt-base-windows-jdk17-v*
+  platform: windows
+
 only_sonarsource_qa: &ONLY_SONARSOURCE_QA
   only_if: >
     $CIRRUS_USER_COLLABORATOR == 'true' &&
@@ -33,7 +47,7 @@ only_sonarsource_qa: &ONLY_SONARSOURCE_QA
 build_task:
   <<: *ONLY_SONARSOURCE_QA
   eks_container:
-    <<: *CONTAINER_DEFINITION_J11
+    <<: *CONTAINER_DEFINITION
     cpu: 2
     memory: 2G
   env:
@@ -56,7 +70,7 @@ build_task:
 build_win_task:
   <<: *ONLY_SONARSOURCE_QA
   ec2_instance:
-    <<: *INSTANCE_DEFINITION_WIN_J17
+    <<: *INSTANCE_DEFINITION
   env:
     <<: [ *artifactory_build, *artifactory_private ]
   build_script:
@@ -70,7 +84,7 @@ promote_task:
     - build_win
   <<: *ONLY_SONARSOURCE_QA
   eks_container:
-    <<: *CONTAINER_DEFINITION_J11
+    <<: *CONTAINER_DEFINITION
     cpu: 1
     memory: 1G
   env:
