@@ -3,7 +3,7 @@
 # gcp_credentials: |
 #   ENCRYPTED[aebc0a5ebae9bfa7262fed18dc181d97db901420322b0483a8c8e04751ecde508c8eefbef3e85d17d5e2bdb829c117cb]
 # release-engineering-ci-prod
-gcp_credentials: |
+gcp_credentials: >-
   ENCRYPTED[!149d4005ecdba4cdd78bb5ba22756ebb98bf8e3367ee2e9ab08c5a1608c0d3e3b501904b67a1d67c0b63085e469d7dde!]
 
 # language-team-staging gcp project
@@ -13,15 +13,28 @@ gcp_credentials: |
 # gcp_credentials: |
 #  ENCRYPTED[!af138a5aa099fbf14e2683d14deecf93fa8fbb3501fa07a96de500c77b942ed9a6b58bf63971bbbafd93620083038129!]
 
+
+artifactory_build: &artifactory_build
+  ARTIFACTORY_API_KEY: >-
+    VAULT[development/artifactory/token/${CIRRUS_REPO_OWNER}-${CIRRUS_REPO_NAME}-private-reader access_token]
+  ARTIFACTORY_DEPLOY_USERNAME: vault-${CIRRUS_REPO_OWNER}-${CIRRUS_REPO_NAME}-qa-deployer
+  ARTIFACTORY_DEPLOY_PASSWORD: >-
+    VAULT[development/artifactory/token/${CIRRUS_REPO_OWNER}-${CIRRUS_REPO_NAME}-qa-deployer access_token]
+
+artifactory_private: &artifactory_private
+  ARTIFACTORY_PRIVATE_USERNAME: vault-${CIRRUS_REPO_OWNER}-${CIRRUS_REPO_NAME}-private-reader
+  ARTIFACTORY_PRIVATE_PASSWORD: >-
+    VAULT[development/artifactory/token/${CIRRUS_REPO_OWNER}-${CIRRUS_REPO_NAME}-private-reader access_token]
+
 env:
   CIRRUS_CLONE_DEPTH: "20"
-  ARTIFACTORY_PRIVATE_USERNAME: vault-sonarsource-sonar-dummy-private-reader
-  ARTIFACTORY_DEPLOY_USERNAME: vault-sonarsource-sonar-dummy-qa-deployer
+  CIRRUS_VAULT_URL: https://vault.sonar.build:8200
+  CIRRUS_VAULT_AUTH_PATH: jwt-cirrusci
+  CIRRUS_VAULT_ROLE: cirrusci-${CIRRUS_REPO_OWNER}-${CIRRUS_REPO_NAME}
+  ARTIFACTORY_URL: VAULT[development/kv/data/repox data.url]
   # Possible values for ARTIFACTORY_DEPLOY_REPO: sonarsource-private-qa, sonarsource-public-qa
   ARTIFACTORY_DEPLOY_REPO: sonarsource-private-qa
   # access license key
-  # GITHUB_TOKEN: |
-  #   ENCRYPTED[!f458126aa9ed2ac526f220c5acb51dd9cc255726b34761a56fc78d4294c11089502a882888cef0ca7dd4085e72e611a5!]
   # Use bash (instead of sh on linux or cmd.exe on windows)
   CIRRUS_SHELL: bash
 
@@ -37,7 +50,7 @@ win_vm_definition: &WINDOWS_VM_DEFINITION
     image_family: lt-base-windows-jdk17
     platform: windows
     zone: europe-west4-b
-    preemptible: false
+    preemptible: "false"
     disk: 80
     type: n1-standard-4
 
@@ -52,10 +65,6 @@ only_sonarsource_qa: &ONLY_SONARSOURCE_QA
     || $CIRRUS_BUILD_SOURCE == 'api'
     )
 
-vault: &VAULT
-  vault_script:
-    - vault.sh
-
 build_task:
   <<: *ONLY_SONARSOURCE_QA
   gke_container:
@@ -63,22 +72,26 @@ build_task:
     cpu: 2
     memory: 2G
   env:
+    <<: [*artifactory_build, *artifactory_private]
+    GITHUB_TOKEN: VAULT[development/github/token/licenses-ro token]
     # analysis on next
     SONAR_HOST_URL: https://next.sonarqube.com/sonarqube
+    SONAR_TOKEN: VAULT[development/kv/data/next data.token]
+    SIGN_KEY: VAULT[development/kv/data/sign data.key]
+    PGP_PASSPHRASE: VAULT[development/kv/data/sign data.passphrase]
     # allow deployment of pull request artifacts to repox
     DEPLOY_PULL_REQUEST: "true"
   maven_cache:
     folder: ${CIRRUS_WORKING_DIR}/.m2/repository
-  <<: *VAULT
   build_script:
     - source cirrus-env BUILD-PRIVATE
     - regular_mvn_build_deploy_analyze
   cleanup_before_cache_script: cleanup_maven_repository
 
 build_win_task:
-  <<: *ONLY_SONARSOURCE_QA
-  <<: *WINDOWS_VM_DEFINITION
-  <<: *VAULT
+  <<: [*ONLY_SONARSOURCE_QA, *WINDOWS_VM_DEFINITION]
+  env:
+    <<: [*artifactory_build, *artifactory_private]
   build_script:
     - source cirrus-env CI-PRIVATE
     - mvn.cmd test
@@ -94,12 +107,18 @@ promote_task:
     cpu: 1
     memory: 1G
   env:
+    <<: *artifactory_private
+    GITHUB_TOKEN: VAULT[development/github/token/${CIRRUS_REPO_OWNER}-${CIRRUS_REPO_NAME}-promotion token]
     # promotion cloud function
+    GCF_ACCESS_TOKEN: VAULT[development/kv/data/promote data.token]
+    PROMOTE_URL: VAULT[development/kv/data/promote data.url]
     # artifacts that will have downloadable links in burgr
     ARTIFACTS: com.sonarsource.dummy:sonar-dummy-plugin:jar
+    BURGR_URL: VAULT[development/kv/data/burgr data.url]
+    BURGR_USERNAME: VAULT[development/kv/data/burgr data.cirrus_username]
+    BURGR_PASSWORD: VAULT[development/kv/data/burgr data.cirrus_password]
   maven_cache:
     folder: ${CIRRUS_WORKING_DIR}/.m2/repository
-  <<: *VAULT
   script:
     - cirrus_promote_maven
   cleanup_before_cache_script: cleanup_maven_repository
