@@ -1,4 +1,4 @@
-load("github.com/SonarSource/cirrus-modules@3560618c4ade82152008a15ca82f1bc80ed5e91e", "auth", "parse") # tag=0.0.1
+load("github.com/SonarSource/cirrus-modules@v1", "cirrus_auth")
 
 def main(ctx):
-    return auth() + parse(".cirrus/build.yml")
+    return cirrus_auth()
