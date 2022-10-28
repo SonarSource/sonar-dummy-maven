@@ -29,8 +29,8 @@ ec2_instance: &INSTANCE_DEFINITION
   experimental: true # see https://github.com/cirruslabs/cirrus-ci-docs/issues/1051
   region: eu-central-1
   subnet_id: ${CIRRUS_AWS_SUBNET}
-  type: t2.xlarge
-  image: lt-base-windows-jdk17-v*
+  type: t3.medium
+  image: base-windows-jdk17-v*
   platform: windows
 
 only_sonarsource_qa: &ONLY_SONARSOURCE_QA
