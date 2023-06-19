@@ -1,1 +1,4 @@
 * @sonarsource/re-team
+
+# No review needed for documentation
+*.md 
