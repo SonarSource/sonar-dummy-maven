@@ -51,7 +51,7 @@ build_task:
     <<: [ *artifactory_build, *artifactory_private ]
     GITHUB_TOKEN: VAULT[development/github/token/licenses-ro token]
     # analysis on next
-    SONAR_HOST_URL: https://next.sonarqube.com/sonarqube
+    SONAR_HOST_URL: VAULT[development/kv/data/next data.url]
     SONAR_TOKEN: VAULT[development/kv/data/next data.token]
     SIGN_KEY: VAULT[development/kv/data/sign data.key]
     PGP_PASSPHRASE: VAULT[development/kv/data/sign data.passphrase]
