@@ -25,7 +25,7 @@ eks_container: &CONTAINER_DEFINITION
 ec2_instance: &INSTANCE_DEFINITION
   experimental: true # see https://github.com/cirruslabs/cirrus-ci-docs/issues/1051
   region: eu-central-1
-  subnet_id: ${CIRRUS_AWS_SUBNET}
+  subnet_ids: ${CIRRUS_AWS_SUBNETS}
   type: t3.medium
   image: base-windows-jdk17-v*
   platform: windows
@@ -69,7 +69,7 @@ docker_build_task:
   experimental: true # see https://github.com/cirruslabs/cirrus-ci-docs/issues/1051
   eks_container:
     <<: *CONTAINER_DEFINITION
-    builder_subnet_id: ${CIRRUS_AWS_SUBNET}
+    builder_subnet_ids: ${CIRRUS_AWS_SUBNETS}
     builder_role: cirrus-builder
     builder_image: docker-builder-v*
     builder_instance_type: t2.small
