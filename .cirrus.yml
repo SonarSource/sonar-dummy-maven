@@ -30,19 +30,7 @@ ec2_instance: &INSTANCE_DEFINITION
   image: base-windows-jdk17-v*
   platform: windows
 
-only_sonarsource_qa: &ONLY_SONARSOURCE_QA
-  only_if: >
-    $CIRRUS_USER_COLLABORATOR == 'true' &&
-    $CIRRUS_TAG == "" &&
-    ($CIRRUS_PR != "" ||
-    $CIRRUS_BRANCH == 'master'
-    || $CIRRUS_BRANCH =~ "branch-.*"
-    || $CIRRUS_BRANCH =~ "dogfood-on-.*"
-    || $CIRRUS_BUILD_SOURCE == 'api'
-    )
-
 build_task:
-  <<: *ONLY_SONARSOURCE_QA
   eks_container:
     <<: *CONTAINER_DEFINITION
     cpu: 2
@@ -65,7 +53,6 @@ build_task:
   cleanup_before_cache_script: cleanup_maven_repository
 
 docker_build_task:
-  <<: *ONLY_SONARSOURCE_QA
   experimental: true # see https://github.com/cirruslabs/cirrus-ci-docs/issues/1051
   eks_container:
     <<: *CONTAINER_DEFINITION
@@ -81,7 +68,6 @@ docker_build_task:
 
 
 build_win_task:
-  <<: *ONLY_SONARSOURCE_QA
   ec2_instance:
     <<: *INSTANCE_DEFINITION
   env:
@@ -95,7 +81,6 @@ promote_task:
   depends_on:
     - build
     - build_win
-  <<: *ONLY_SONARSOURCE_QA
   eks_container:
     <<: *CONTAINER_DEFINITION
     cpu: 1
@@ -103,9 +88,7 @@ promote_task:
   env:
     <<: *artifactory_private
     GITHUB_TOKEN: VAULT[development/github/token/${CIRRUS_REPO_OWNER}-${CIRRUS_REPO_NAME}-promotion token]
-    # promotion cloud function
-    GCF_ACCESS_TOKEN: VAULT[development/kv/data/promote data.token]
-    PROMOTE_URL: VAULT[development/kv/data/promote data.url]
+    ARTIFACTORY_PROMOTE_ACCESS_TOKEN: VAULT[development/artifactory/token/${CIRRUS_REPO_OWNER}-${CIRRUS_REPO_NAME}-promoter access_token]
     # artifacts that will have downloadable links in burgr
     ARTIFACTS: com.sonarsource.dummy:sonar-dummy-plugin:jar
     BURGR_URL: VAULT[development/kv/data/burgr data.url]
@@ -113,6 +96,5 @@ promote_task:
     BURGR_PASSWORD: VAULT[development/kv/data/burgr data.cirrus_password]
   maven_cache:
     folder: ${CIRRUS_WORKING_DIR}/.m2/repository
-  script:
-    - cirrus_promote_maven
+  script: cirrus_promote_maven
   cleanup_before_cache_script: cleanup_maven_repository
