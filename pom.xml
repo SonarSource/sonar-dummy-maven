@@ -44,6 +44,7 @@
         <groupId>org.codehaus.sonar</groupId>
         <artifactId>sonar-plugin-api</artifactId>
         <version>${sonarVersion}</version>
+        <scope>provided</scope>
       </dependency>
 
       <dependency>
