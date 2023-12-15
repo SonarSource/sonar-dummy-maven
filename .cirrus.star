@@ -1,4 +1,4 @@
-load("github.com/SonarSource/cirrus-modules@v2", "load_features")
+load("github.com/SonarSource/cirrus-modules@feature/BUILD-4311-cirrus-modules-Add-support-for-Github-Merge-Queue-branches", "load_features")
 
 
 def main(ctx):
