@@ -49,6 +49,7 @@ build_task:
     folder: ${CIRRUS_WORKING_DIR}/.m2/repository
   wait_scrit:
     - sleep 60
+    - echo "test"
   build_script:
     - source cirrus-env BUILD-PRIVATE
     - regular_mvn_build_deploy_analyze
