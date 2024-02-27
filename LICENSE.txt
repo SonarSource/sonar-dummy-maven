@@ -1,3 +1,4 @@
 Copyright (C) ${inceptionYear}-${year} SonarSource SA
 All rights reserved
-mailto:info AT sonarsource DOT com
+mailto:info AT SonarSource DOT com
+
