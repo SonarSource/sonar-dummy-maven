@@ -1,6 +1,6 @@
 # sonar-dummy
 
-A sample project used for testing purposes
+A sample project used for testing purposes.
 
 This project uses **maven** and **is not published on maven central** (private)
 
