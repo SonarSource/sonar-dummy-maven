@@ -36,7 +36,7 @@ build_task:
     cpu: 2
     memory: 2G
   env:
-    <<: [ *artifactory_build, *artifactory_private ]
+    <<: [*artifactory_build, *artifactory_private]
     GITHUB_TOKEN: VAULT[development/github/token/licenses-ro token]
     # analysis on next
     SONAR_HOST_URL: VAULT[development/kv/data/next data.url]
@@ -69,12 +69,11 @@ docker_build_task:
   test_script:
     - node --version
 
-
 build_win_task:
   ec2_instance:
     <<: *INSTANCE_DEFINITION
   env:
-    <<: [ *artifactory_build, *artifactory_private ]
+    <<: [*artifactory_build, *artifactory_private]
   build_script:
     - source cirrus-env CI-PRIVATE
     - mvn.cmd test
