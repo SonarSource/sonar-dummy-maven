@@ -12,7 +12,6 @@ env:
   ARTIFACTORY_URL: VAULT[development/kv/data/repox data.url]
   # Possible values for ARTIFACTORY_DEPLOY_REPO: sonarsource-private-qa, sonarsource-public-qa
   ARTIFACTORY_DEPLOY_REPO: sonarsource-private-qa
-  # access license key
   # Use bash (instead of sh on linux or cmd.exe on Windows)
   CIRRUS_SHELL: bash
 
@@ -23,9 +22,7 @@ eks_container: &CONTAINER_DEFINITION
   namespace: default
 
 ec2_instance: &INSTANCE_DEFINITION
-  experimental: true # see https://github.com/cirruslabs/cirrus-ci-docs/issues/1051
   region: eu-central-1
-  subnet_ids: ${CIRRUS_AWS_SUBNETS}
   type: t3.medium
   image: base-windows-jdk17-v*
   platform: windows
@@ -56,10 +53,8 @@ build_task:
   cleanup_before_cache_script: cleanup_maven_repository
 
 docker_build_task:
-  experimental: true # see https://github.com/cirruslabs/cirrus-ci-docs/issues/1051
   eks_container:
     <<: *CONTAINER_DEFINITION
-    builder_subnet_ids: ${CIRRUS_AWS_SUBNETS}
     builder_role: cirrus-builder
     builder_image: docker-builder-v*
     builder_instance_type: t2.small
