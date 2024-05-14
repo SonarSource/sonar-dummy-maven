@@ -24,6 +24,7 @@ repos:
         # line-length: Usually we test gh_action-release in this repo using a target branch instead of a tag before
         # releasing it. It can't fit in small lines length
         args: [-d, "{extends: default, rules: {line-length: {max: 200}}}"]
+        exclude: ^.github/workflows/slack_notify.yml$
   - repo: https://github.com/markdownlint/markdownlint
     rev: 4089e11ea61317283a50455ff73afe895b9d8b2d  # frozen: v0.11.0
     hooks:
