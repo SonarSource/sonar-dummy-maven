@@ -1,8 +1,6 @@
 #!/bin/bash
 set -xeuo pipefail
 
-outputs="$1"
-
-description=$(echo "$outputs" | jq ".statuses[].description")
+description=$(echo "$OUTPUTS" | jq ".statuses[].description")
 
 echo $description
