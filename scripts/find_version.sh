@@ -4,7 +4,7 @@ set -xeuo pipefail
 
 version=""
 
-readarray -t statuses < <(echo "$OUTPUTS" | jq -c ".data.statuses[]")
+readarray -t statuses < <(echo "$OUTPUTS" | jq -c ".statuses[]")
 for i in "${statuses[@]}"; do
   desc=$(echo "$i" | jq -r ".description")
   v=$(echo "$desc" | cut -d\' -f 2 )
