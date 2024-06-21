@@ -12,7 +12,7 @@ import com.google.common.collect.Lists;
 
 public final class DummyPlugin extends SonarPlugin {
 
-  private static final Logger LOGGER = Logger.getLogger(DummyPlugin.class.getName());
+  iprivate static final Logger LOGGER = Logger.getLogger(DummyPlugin.class.getName());
 
   @SuppressWarnings({ "rawtypes" })
   @Override
