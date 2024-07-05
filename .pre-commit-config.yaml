@@ -9,7 +9,7 @@ repos:
       - id: check-hooks-apply
       - id: check-useless-excludes
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: 3298ddab3c13dd77d6ce1fc0baf97691430d84b0  # frozen: v4.3.0
+    rev: 2c9f875913ee60ca25ce70243dc24d5b6415598c  # frozen: v4.6.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
@@ -18,22 +18,22 @@ repos:
       - id: check-xml
       - id: check-added-large-files
   - repo: https://github.com/adrienverge/yamllint
-    rev: 9cce2940414e9560ae4c8518ddaee2ac1863a4d2  # frozen: v1.28.0
+    rev: 81e9f98ffd059efe8aa9c1b1a42e5cce61b640c6  # frozen: v1.35.1
     hooks:
       - id: yamllint
         # line-length: Usually we test gh_action-release in this repo using a target branch instead of a tag before
         # releasing it. It can't fit in small lines length
         args: [-d, "{extends: default, rules: {line-length: {max: 200}}}"]
-  - repo: https://github.com/markdownlint/markdownlint
-    rev: 4089e11ea61317283a50455ff73afe895b9d8b2d  # frozen: v0.11.0
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: f295829140d25717bc79368d3f966fc1f67a824f  # frozen: v0.41.0
     hooks:
       - id: markdownlint
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 9ff55b0adf11b603e0e2b4e1d639255278f4316f  # frozen: 0.18.3
+    rev: 96ee1570b119e6337aafcc2f299bb0d902b68328  # frozen: 0.28.6
     hooks:
       - id: check-github-workflows
       - id: check-renovate
   - repo: https://github.com/hadolint/hadolint
-    rev: 0269c965ba799e7f79da826d9589eaca46eacb9a  # frozen: v2.10.0
+    rev: 80e0d3d0c58dcdcbced97854ab7c5cf00a5f1a86  # frozen: v2.13.0-beta
     hooks:
       - id: hadolint
