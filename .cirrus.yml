@@ -15,13 +15,13 @@ env:
   # Use bash (instead of sh on linux or cmd.exe on Windows)
   CIRRUS_SHELL: bash
 
-eks_container: &CONTAINER_DEFINITION
+eks_container_definition: &CONTAINER_DEFINITION
   image: ${CIRRUS_AWS_ACCOUNT}.dkr.ecr.eu-central-1.amazonaws.com/base:j19-latest
   cluster_name: ${CIRRUS_CLUSTER_NAME}
   region: eu-central-1
   namespace: default
 
-ec2_instance: &INSTANCE_DEFINITION
+ec2_instance_definition: &INSTANCE_DEFINITION
   region: eu-central-1
   type: t3.medium
   image: base-windows-jdk17-v*
