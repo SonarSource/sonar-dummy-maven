@@ -21,7 +21,7 @@ public final class DummyPlugin extends SonarPlugin {
   }
 
   public static String sayHello() {
-    String message = "hello world";
+    String message = "Hello world!";
     LOGGER.info(message);
     return message;
   }
