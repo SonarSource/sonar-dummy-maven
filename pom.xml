@@ -23,7 +23,7 @@
   </licenses>
 
   <properties>
-    <sonarVersion>4.5.7</sonarVersion>
+    <sonarVersion>5.1</sonarVersion>
     <gitRepositoryName>sonar-dummy</gitRepositoryName>
     <artifactsToPublish>${project.groupId}:sonar-dummy-plugin:jar,${project.groupId}:${project.artifactId}:json:cyclonedx</artifactsToPublish>
   </properties>
