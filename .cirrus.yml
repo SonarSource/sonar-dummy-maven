@@ -95,21 +95,3 @@ promote_task:
     folder: ${CIRRUS_WORKING_DIR}/.m2/repository
   script: cirrus_promote_maven
   cleanup_before_cache_script: cleanup_maven_repository
-
-update_stable_branch_task:
-  only_if: $CIRRUS_USER_COLLABORATOR == 'true' && $CIRRUS_TAG == "" && $CIRRUS_BRANCH == $CIRRUS_DEFAULT_BRANCH
-  depends_on:
-    - build
-    - build_win
-    - docker_build
-  eks_container:
-    <<: *CONTAINER_DEFINITION
-    cpu: 1
-    memory: 1G
-  env:
-    GITHUB_TOKEN: VAULT[development/github/token/${CIRRUS_REPO_OWNER}-${CIRRUS_REPO_NAME}-stable token]
-  script: |
-    git fetch origin stable:stable
-    git checkout stable
-    git reset --hard origin/$CIRRUS_DEFAULT_BRANCH
-    git push origin stable
