@@ -73,6 +73,13 @@ build_win_task:
   cleanup_before_cache_script: cleanup_maven_repository
 
 promote_task:
+  only_if: $CIRRUS_USER_COLLABORATOR == 'true' && $CIRRUS_TAG == "" && (
+    $CIRRUS_PR != "" ||
+    $CIRRUS_BRANCH == $CIRRUS_DEFAULT_BRANCH ||
+    $CIRRUS_BRANCH =~ "gh-readonly-queue/.*" ||
+    $CIRRUS_BRANCH =~ "branch-.*" ||
+    $CIRRUS_BRANCH =~ "dogfood-on-.*"
+    )
   depends_on:
     - build
     - build_win
