@@ -73,7 +73,9 @@ build_win_task:
   cleanup_before_cache_script: cleanup_maven_repository
 
 promote_task:
-  only_if: $CIRRUS_USER_COLLABORATOR == 'true' && $CIRRUS_TAG == "" && (
+  only_if: $CIRRUS_USER_COLLABORATOR == 'true' && $CIRRUS_TAG == "" &&
+    $CIRRUS_BUILD_SOURCE != "api" &&
+    (
     $CIRRUS_PR != "" ||
     $CIRRUS_BRANCH == $CIRRUS_DEFAULT_BRANCH ||
     $CIRRUS_BRANCH =~ "gh-readonly-queue/.*" ||
