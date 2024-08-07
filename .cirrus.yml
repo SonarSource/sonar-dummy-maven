@@ -34,10 +34,10 @@ build_task:
     memory: 2G
   env:
     <<: [*artifactory_build, *artifactory_private]
-    GITHUB_TOKEN: VAULT[development/github/token/licenses-ro token]
-    # analysis on next
-    SONAR_HOST_URL: VAULT[development/kv/data/next data.url]
-    SONAR_TOKEN: VAULT[development/kv/data/next data.token]
+    GITHUB_TOKEN: VAULT[development/github/token/${CIRRUS_REPO_OWNER}-${CIRRUS_REPO_NAME}-ro token]
+    # Sonar Analysis
+    SONAR_HOST_URL: VAULT[development/kv/data/sonarcloud data.url]
+    SONAR_TOKEN: VAULT[development/kv/data/sonarcloud data.token]
     SIGN_KEY: VAULT[development/kv/data/sign data.key]
     PGP_PASSPHRASE: VAULT[development/kv/data/sign data.passphrase]
     # allow deployment of pull request artifacts to repox

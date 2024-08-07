@@ -10,9 +10,9 @@ import java.util.logging.Logger;
 import org.sonar.api.SonarPlugin;
 import com.google.common.collect.Lists;
 
-public final class DummyPlugin extends SonarPlugin {
+public final class DummyMavenPlugin extends SonarPlugin {
 
-  private static final Logger LOGGER = Logger.getLogger(DummyPlugin.class.getName());
+  private static final Logger LOGGER = Logger.getLogger(DummyMavenPlugin.class.getName());
 
   @SuppressWarnings({ "rawtypes" })
   @Override
