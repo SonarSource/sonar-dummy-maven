@@ -1,4 +1,4 @@
-# sonar-dummy
+# sonar-dummy-maven-enterprise
 
 A sample project used for testing purposes
 
