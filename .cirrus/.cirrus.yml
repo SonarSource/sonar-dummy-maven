@@ -3,16 +3,11 @@ env:
   # Use bash (instead of sh on linux or cmd.exe on Windows)
   CIRRUS_SHELL: bash
 
-eks_container_definition: &CONTAINER_DEFINITION
-  image: ${CIRRUS_AWS_ACCOUNT}.dkr.ecr.eu-central-1.amazonaws.com/base:j21-latest
-  cluster_name: ${CIRRUS_CLUSTER_NAME}
-  region: eu-central-1
-  namespace: default
+container:
+  image: public.ecr.aws/docker/library/maven:3.9.9-amazoncorretto-23-alpine
+  cpu: 2
+  memory: 2G
 
 build_task:
-  eks_container:
-    <<: *CONTAINER_DEFINITION
-    cpu: 2
-    memory: 2G
   build_script:
     - echo "sonar-dummy-maven"
