@@ -3,7 +3,7 @@ load("cirrus", "env", "fs", "yaml")
 
 def main(ctx):
     if env.get("CIRRUS_REPO_FULL_NAME") == 'SonarSource/sonar-dummy-maven-enterprise' and fs.exists("private/.cirrus.yml"):
-        features = yaml.dumps(load_features(ctx, only_if=dict()))
+        features = yaml.dumps(load_features(ctx, only_if=dict(), aws=dict(env_type="dev", cluster_name="CirrusCI-10-dev")))
         doc = fs.read("private/.cirrus.yml")
     else:
         if env.get("CIRRUS_USER_PERMISSION") in ["write", "admin"]:
