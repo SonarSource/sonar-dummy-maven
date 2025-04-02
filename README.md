@@ -1,6 +1,6 @@
 # sonar-dummy-maven
 
-A sample project used for testing purposes
+A sample project used for showcase and testing purposes
 
 This project uses **Maven** and is the public part sync
 of [sonar-dummy-maven-enterprise](https://github.com/SonarSource/sonar-dummy-maven-enterprise) private repository.
