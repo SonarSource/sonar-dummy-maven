@@ -2,3 +2,4 @@
 java = "21.0"
 maven = "3.9"
 pre-commit = "4.2.0"
+jq = "1.7.1"
