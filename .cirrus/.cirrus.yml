@@ -1,3 +1,4 @@
+---
 env:
   CIRRUS_CLONE_DEPTH: "20"
   # Use bash (instead of sh on linux or cmd.exe on Windows)
