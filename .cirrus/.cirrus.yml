@@ -5,10 +5,10 @@ env:
   CIRRUS_SHELL: bash
 
 container:
-  image: public.ecr.aws/docker/library/maven:3.9.9-amazoncorretto-23-alpine
+  image: public.ecr.aws/docker/library/maven:3.9.9-amazoncorretto-21-alpine
   cpu: 2
   memory: 2G
 
 build_task:
   build_script:
-    - echo "sonar-dummy-maven"
+    - mvn --batch-mode verify
